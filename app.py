@@ -12,7 +12,8 @@ api = Api(app)
 
 # Initiate CORS
 cors = CORS(app)
-cors = CORS(app, resources={r"/*": {"origins": "*"}})
+cors = CORS(app, resources={r"/*": {"origins": "https://steimenfess.vercel.app/"}})
+
 #Setting the location for the sqlite database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///base.db'
 #Adding the configurations for the database
@@ -80,7 +81,6 @@ class All_Fess(Resource):
 #Adding the URIs to the api
 api.add_resource(All_Fess, '/')
 api.add_resource(Menfess_List, '/<int:fess_id>') 
-
 
 if __name__=='__main__':        
     #Run the applications
