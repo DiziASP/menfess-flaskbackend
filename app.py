@@ -2,6 +2,7 @@
 #Import necessary packages
 from flask import Flask
 from flask_restful import Resource, reqparse, Api 
+from flask_cors import CORS
 
 #Instantiate a flask object 
 app = Flask(__name__)
@@ -9,6 +10,9 @@ app = Flask(__name__)
 #Instantiate Api object
 api = Api(app)
 
+# Initiate CORS
+cors = CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 #Setting the location for the sqlite database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///base.db'
 #Adding the configurations for the database
