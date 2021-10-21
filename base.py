@@ -11,14 +11,15 @@ class Fess(db.Model):
     id = db.Column(db.Integer, primary_key=True)    
     name = db.Column(db.String(80),unique=False, nullable=False)                                            
     menfess = db.Column(db.String(500), nullable=False)
+    faculty = db.Column(db.String(500), nullable=False)
 
-    def __init__(self, name, menfess):                 
+    def __init__(self, name, menfess,faculty):                 
         self.name = name        
         self.menfess = menfess               
-
+        self.faculty = faculty
     #Method to show data as dictionary object
     def json(self):        
-        return {'name': self.name, 'menfess': self.menfess}        
+        return {'name': self.name, 'menfess': self.menfess,'faculty': self.faculty}        
  
     #Method to find the query movie is existing or not
     @classmethod    

@@ -35,7 +35,7 @@ class Menfess_List(Resource):
     parser = reqparse.RequestParser()     
     parser.add_argument('name', type=str, required=False, help='name of the menfess')                 
     parser.add_argument('menfess', type=str, required=False, help='Content of the menfess')    
-      
+    parser.add_argument('faculty', type=str, required=False, help='F of the menfess')    
     
 #Creating the get method
     def get(self, fess):        
@@ -59,6 +59,7 @@ class All_Fess(Resource):
     parser = reqparse.RequestParser()     
     parser.add_argument('name', type=str, required=False, help='name of the menfess')                 
     parser.add_argument('menfess', type=str, required=False, help='Content of the menfess')
+    parser.add_argument('faculty', type=str, required=False, help='F of the menfess')  
 
 #Defining the get method
     def get(self):        
@@ -66,7 +67,7 @@ class All_Fess(Resource):
 
     def post(self):                
         args = All_Fess.parser.parse_args()        
-        item = Fess(args["name"], args['menfess'])   
+        item = Fess(args["name"], args['menfess'],args['faculty'])   
         
         item.save_to()        
         return item.json()
